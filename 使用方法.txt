@@ -1,8 +1,28 @@
-1.�л���Dockerfile��ŵ�Ŀ¼
-��װ
+
+/************安装mysql**********好用
+docker pull daocloud.io/library/mysql:5.7
+docker run -p 3306:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=root -d daocloud.io/library/mysql:5.7
+//挂载本地目录 挂载相同的位置 ，下次启动时 数据库保持不变
+docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -v /data/mysql:/var/lib/mysql  -d daocloud.id/library/mysql:5.7
+
+docker ps
+docker exec -it 58b2da4631d4 bash      //58b2da4631d4是启动的mysql的id
+
+mysql -uroot -p root
+grant all privileges on *.* to 'root'@'%' identified by 'root'; //授权
+
+
+启动时报错chown: changing ownership of '/var/lib/mysql/': Permission denied
+使用权限来启动--privileged=true
+docker run --privileged=true -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=root -v /data/mysql:/var/lib/mysql  daocloud.io/library/mysql:5.7 
+
+
+=====================》》》》》》》》》》》》》》》》另外的方式》》》》》》》》》》》》
+1.切换到Dockerfile存放的目录
+安装
 docker build -t mysql-centos6.7:v2 .
 
-����
+启动
 docker run -p3306:3306 -v /data/mysql:/var/lib/mysql -d mysql-centos6.7:v2
 
 
@@ -10,5 +30,6 @@ docker run -p3306:3306 -v /data/mysql:/var/lib/mysql -d mysql-centos6.7:v2
 
 
 
-����һ�ַ�����ֱ�����о��� ������������
+另外一种方法：直接运行镜像 跑起来就行了
 docker pull chenyufeng/mysql-centos
+
