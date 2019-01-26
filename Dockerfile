@@ -1,4 +1,4 @@
-FROM daocloud.io/library/mysql:5.7
+FROM mysql:5.7
 MAINTAINER monkey "450416064@qq.com"  
 
 
