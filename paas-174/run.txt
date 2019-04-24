@@ -1,0 +1,1 @@
+docker run --privileged=true -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=root -v /data/mysql:/var/lib/mysql -v /usr/local/docker-mysql/my.cnf£º/etc/mysql/my.cnf daocloud.io/library/mysql:5.7 --lower_case_table_names=1
