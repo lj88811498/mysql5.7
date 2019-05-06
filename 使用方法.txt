@@ -33,3 +33,10 @@ docker run -p3306:3306 -v /data/mysql:/var/lib/mysql -d mysql-centos6.7:v2
 另外一种方法：直接运行镜像 跑起来就行了
 docker pull chenyufeng/mysql-centos
 
+
+
+
+启动带默认参数
+docker run --name=mysql --restart=always --privileged=true -p 3306:3306 -d -e MYSQL_ROOT_PASSWORD=root -v /data/mysql:/var/lib/mysql -v /usr/local/docker-mysql/my.cnf:/etc/mysql/my.cnf daocloud.io/library/mysql:5.7 --lower_case_table_names=1 --max_allowed_packet=1048576
+
+
