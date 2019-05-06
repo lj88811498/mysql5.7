@@ -1,4 +1,4 @@
-
+﻿
 /************安装mysql**********好用
 docker pull daocloud.io/library/mysql:5.7
 docker run -p 3306:3306 --name mysql5.7 -e MYSQL_ROOT_PASSWORD=root -d daocloud.io/library/mysql:5.7
@@ -25,6 +25,7 @@ docker build -t mysql-centos6.7:v2 .
 启动
 docker run -p3306:3306 -v /data/mysql:/var/lib/mysql -d mysql-centos6.7:v2
 
+docker run -p3306:3306 --restart=always -v /data/mysql:/var/lib/mysql -d mysql-centos6.7:v2
 
 
 
