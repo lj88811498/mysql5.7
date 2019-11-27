@@ -1,0 +1,15 @@
+docker run   --restart=always --privileged=true -p 3307:3306 -d -e MYSQL_ROOT_PASSWORD=root -v /data2/mysql:/var/lib/mysql -v /data2/config/mysqld.cnf:/etc/mysql/mysqld.conf.d/mysqld.cnf mysql:5.7 --lower_case_table_names=1
+
+
+
+
+开启log-bin 方式1
+docker run   --restart=always --privileged=true -p 3307:3306 -d -e MYSQL_ROOT_PASSWORD=root -v /data2/mysql:/var/lib/mysql  mysql:5.7 --lower_case_table_names=1 --log-bin=/var/lib/mysql/mysql-bin --server-id=321  --max_allowed_packet=1048576
+
+开启log-bin 方式2
+docker run   --restart=always --privileged=true -p 3307:3306 -d -e MYSQL_ROOT_PASSWORD=root -v /data2/mysql:/var/lib/mysql -v /data2/config/mysql:/etc/mysql mysql:5.7 --lower_case_table_names=1
+
+
+/data2/mysql  数据目录
+
+/data2/config/mysql 目录为配置文件目录
