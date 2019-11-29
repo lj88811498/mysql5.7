@@ -13,3 +13,12 @@ docker run   --restart=always --privileged=true -p 3307:3306 -d -e MYSQL_ROOT_PA
 /data2/mysql  数据目录
 
 /data2/config/mysql 目录为配置文件目录
+
+
+
+
+开启跳过密码权限
+在/data2/config/mysql/mysql.conf.d/mysqld.cnf
+[mysqld]下加入 skip-grant-tables
+
+ docker run   --restart=always --privileged=true -p 3307:3306 -d -e MYSQL_ROOT_PASSWORD=root -v /data2/mysql:/var/lib/mysql -v /data2/config/mysql:/etc/mysql mysql:5.7 --lower_case_table_names=1
